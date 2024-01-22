@@ -94,8 +94,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/BlitterStudio/amiberry
-        tag: preview-v6.1.2
-        commit: ad85d7c2b06de5cdfbaaf1d6fb2d4baa5ff2a96a
+        tag: preview-v6.1.3
+        commit: f8bc2bea15e482b09f74fb2e834352cbb5ed734f
 
       - type: script
         dest-filename: amiberry.sh
