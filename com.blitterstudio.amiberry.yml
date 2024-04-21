@@ -81,9 +81,12 @@ modules:
       - install -Dm644 flatpak/256x256.png /app/share/icons/hicolor/256x256/apps/amiberry.png
       - mkdir -p /app/data
       - cp -R abr /app/data
+      - cp -R cdroms /app/data
       - cp -R conf /app/data
       - cp -R controllers /app/data
       - cp -R data /app/data
+      - cp -R floppies /app/data
+      - cp -R harddrives /app/data
       - cp -R inputrecordings /app/data
       - cp -R kickstarts /app/data
       - cp -R nvram /app/data
@@ -94,8 +97,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/BlitterStudio/amiberry
-        tag: preview-v6.2.0
-        commit: 0e1983042369cd1ee4123d7d4f5198c145b962c2
+        tag: preview-v6.3.0
+        commit: 310643db8a7b883df91c9da1124fcb5ac5942ec6
 
       - type: script
         dest-filename: amiberry.sh
