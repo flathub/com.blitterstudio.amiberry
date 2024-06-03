@@ -99,8 +99,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/BlitterStudio/amiberry
-        tag: preview-v6.3.1
-        commit: 7d4403b941e20b8045cefef696cc7d94c709867f
+        tag: flatpak-stable
+        commit: 9a831c2a1580c789b49160112f30740ec7920b7f
 
       - type: script
         dest-filename: amiberry.sh
