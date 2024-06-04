@@ -100,7 +100,7 @@ modules:
       - type: git
         url: https://github.com/BlitterStudio/amiberry
         tag: flatpak-stable
-        commit: af14d197d903bda10b74ffe24515715eb6cb00c0
+        commit: 07fe744be02c22bdde3eaac0f2e089746faa4a59
 
       - type: script
         dest-filename: amiberry.sh
