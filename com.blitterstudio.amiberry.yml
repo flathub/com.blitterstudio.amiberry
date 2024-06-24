@@ -20,6 +20,13 @@ finish-args:
   - --socket=pulseaudio
   # Filesystem access
   - --filesystem=host
+cleanup:
+- /include
+- /lib/cmake
+- /lib/pkgconfig
+- '*.a'
+- /share/doc
+- /share/man
 
 modules:
   - name: libmpeg2
