@@ -1,10 +1,11 @@
 app-id: com.blitterstudio.amiberry
 runtime: org.freedesktop.Platform
-runtime-version: "23.08"
+runtime-version: "24.08"
 sdk: org.freedesktop.Sdk
-command: amiberry.sh
+command: amiberry
+rename-desktop-file: Amiberry.desktop
+rename-appdata-file: Amiberry.metainfo.xml
 rename-icon: amiberry
-copy-icon: true
 finish-args:
   - --device=all
   # X11 + XShm access
@@ -20,13 +21,6 @@ finish-args:
   - --socket=pulseaudio
   # Filesystem access
   - --filesystem=host
-cleanup:
-- /include
-- /lib/cmake
-- /lib/pkgconfig
-- '*.a'
-- /share/doc
-- /share/man
 
 modules:
   - name: libmpeg2
@@ -66,50 +60,36 @@ modules:
       - -DCMAKE_BUILD_TYPE=Release
     sources:
       - type: git
-        url: https://github.com/PortMidi/PortMidi
+        url: https://github.com/PortMidi/portmidi.git
         tag: v2.0.4
         commit: b808babecdc5d05205467dab5c1006c5ac0fdfd4
     cleanup:
-      - /bin
+      - /lib/cmake
       - /lib/pkgconfig
       - /include
       - '*.a'
       - '*.la'
-
+      
+  - name: enet
+    buildsystem: autotools
+    sources:
+      - type: git
+        url: https://github.com/lsalzman/enet.git
+        tag: v1.3.18
+        commit: 2662c0de09e36f2a2030ccc2c528a3e4c9e8138a
+        x-checker-data:
+          type: git
+          tag-pattern: ^v([\d.]+)$
+      - type: script
+        dest-filename: autogen.sh
+        commands:
+          - autoreconf -ifv
+          
   - name: amiberry
     buildsystem: cmake-ninja
-    config-opts:
-      - -DCMAKE_BUILD_TYPE=Release
-    post-install:
-      - install -Dp -m 755 amiberry /app/bin/amiberry
-      - install -D -m644 -t /app/share/applications/ flatpak/${FLATPAK_ID}.desktop
-      - install -D -m644 -t /app/share/metainfo/ flatpak/${FLATPAK_ID}.metainfo.xml
-      - install -D -m755 -t /app/bin/ ./amiberry.sh
-      - install -Dm644 flatpak/256x256.png /app/share/icons/hicolor/256x256/apps/amiberry.png
-      - mkdir -p /app/data
-      - cp -R abr /app/data
-      - cp -R cdroms /app/data
-      - cp -R conf /app/data
-      - cp -R controllers /app/data
-      - cp -R data /app/data
-      - cp -R floppies /app/data
-      - cp -R harddrives /app/data
-      - cp -R inputrecordings /app/data
-      - cp -R kickstarts /app/data
-      - cp -R lha /app/data 
-      - cp -R nvram /app/data
-      - cp -R plugins /app/data
-      - cp -R savestates /app/data
-      - cp -R screenshots /app/data
-      - cp -R whdboot /app/data
-
+    builddir: true
     sources:
       - type: git
         url: https://github.com/BlitterStudio/amiberry
-        tag: flatpak-stable
-        commit: cf0d60001463b90b9ecd695885daaf9a89296e7c
-
-      - type: script
-        dest-filename: amiberry.sh
-        commands:
-          - "if [ ! -e \"$XDG_DATA_HOME/data\" ]; then cp -R /app/data/* $XDG_DATA_HOME; fi; exec /app/bin/amiberry"
+        tag: v7.0.0
+        commit: 7dc5e3292f5a0f9810cf77d6126dea593863b8da
