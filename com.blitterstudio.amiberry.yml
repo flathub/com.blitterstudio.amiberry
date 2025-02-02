@@ -91,5 +91,5 @@ modules:
     sources:
       - type: git
         url: https://github.com/BlitterStudio/amiberry
-        tag: flatpak-v7.0.1
-        commit: 81771d7c292548b0ead547276412bb4b21f43471
+        tag: flatpak-v7.0.2
+        commit: f2211999bfb8f9deacab489283fbc4f0e968b0d1
