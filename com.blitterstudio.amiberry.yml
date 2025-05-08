@@ -91,5 +91,5 @@ modules:
     sources:
       - type: git
         url: https://github.com/BlitterStudio/amiberry
-        tag: v7.0.8
-        commit: 780343f5c96051753ddfd9c54a5b51f3de89ac5f
+        tag: v7.0.9
+        commit: 073b49a4ee9485940e68513e3c743427b9c3d0fe
