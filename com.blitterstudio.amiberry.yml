@@ -36,7 +36,7 @@ modules:
     rm-configure: true
     sources:
       - type: archive
-        url: https://libmpeg2.sourceforge.net/files/libmpeg2-0.5.1.tar.gz
+        url: https://web.archive.org/web/20250314123645/https://libmpeg2.sourceforge.io/files/libmpeg2-0.5.1.tar.gz
         sha256: dee22e893cb5fc2b2b6ebd60b88478ab8556cb3b93f9a0d7ce8f3b61851871d4
       - type: script
         dest-filename: autogen.sh
@@ -98,5 +98,5 @@ modules:
     sources:
       - type: git
         url: https://github.com/BlitterStudio/amiberry
-        tag: v7.1.0
-        commit: 787d86881cfaf48574fb55162ad1275c3f4867dd
+        tag: v7.1.1
+        commit: c53d6db770a5580732a7f2bb48abcbfcd95fd0f4
