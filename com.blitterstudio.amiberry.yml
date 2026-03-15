@@ -70,16 +70,20 @@ modules:
     config-opts:
       - -DCMAKE_BUILD_TYPE=Release
     sources:
-      - type: git
-        url: https://github.com/PortMidi/portmidi.git
-        tag: v2.0.4
-        commit: b808babecdc5d05205467dab5c1006c5ac0fdfd4
+      - type: archive
+        url: https://github.com/PortMidi/portmidi/archive/refs/tags/v2.0.7.tar.gz
+        sha256: 43fa65b4ed7ebaa68b0028a538ba8b2ca4dc9b86a7e22ec48842070e010f823f
+        x-checker-data:
+          type: anitya
+          project-id: 3729
+          url-template: https://github.com/PortMidi/portmidi/archive/refs/tags/v$version.tar.gz
     cleanup:
       - /lib/cmake
       - /lib/pkgconfig
       - /include
       - '*.a'
       - '*.la'
+
   - name: enet
     sources:
       - sha256: 28603c895f9ed24a846478180ee72c7376b39b4bb1287b73877e5eae7d96b0dd
@@ -93,6 +97,24 @@ modules:
         dest-filename: autogen.sh
         commands:
           - autoreconf -ifv
+
+  - name: nlohmann-json
+    buildsystem: cmake-ninja
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=Release
+      - -DJSON_BuildTests=OFF
+    sources:
+      - type: archive
+        url: https://github.com/nlohmann/json/archive/refs/tags/v3.12.0.tar.gz
+        sha256: 4b92eb0c06d10683f7447ce9406cb97cd4b453be18d7279320f7b2f025c10187
+        x-checker-data:
+          type: anitya
+          project-id: 11152
+          url-template: https://github.com/nlohmann/json/archive/refs/tags/v$version.tar.gz
+    cleanup:
+      - /include
+      - /lib/cmake
+      - /lib/pkgconfig
 
   - name: amiberry
     buildsystem: cmake-ninja
