@@ -40,8 +40,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/libsdl-org/SDL.git
-        tag: release-3.4.18
-        commit: 829a65d769d935c4852f8159e964312c0957260a
+        tag: release-3.4.20
+        commit: f00dc919ca35b9756316e86c4777392de442f9b2
         x-checker-data:
           type: git
           tag-pattern: ^release-([\d.]+)$
